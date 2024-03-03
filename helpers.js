@@ -50,6 +50,9 @@ function parseDotNotation(str, val, obj) {
 	for (i; i < Math.max(1, keys.length - 1); ++i) {
 		key = keys[i];
 		currentObj[key] = currentObj[key] || {};
+		if (!(currentObj[key] instanceof Object)) {
+			currentObj[key] = { __value: currentObj[key] };
+		}
 		currentObj = currentObj[key];
 	}
 
